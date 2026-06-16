@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evelyn & David ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#F4EAE1;
+    font-family:Georgia, serif;
+    color:#4A3E3D;
+    overflow-x:hidden;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    padding:40px 20px;
+    text-align:center;
+}
+
+h1{
+    font-size:2.8rem;
+    font-weight:normal;
+    letter-spacing:2px;
+}
+
+.fecha{
+    margin-top:10px;
+    margin-bottom:35px;
+    color:#8A7A78;
+    letter-spacing:3px;
+    font-size:0.9rem;
+}
+
+.galeria{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.polaroid{
+    background:white;
+    padding:10px 10px 25px;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.polaroid:hover{
+    transform:scale(1.05);
+}
+
+.polaroid:nth-child(1){
+    transform:rotate(-5deg);
+}
+
+.polaroid:nth-child(2){
+    transform:rotate(5deg);
+}
+
+.polaroid img{
+    width:190px;
+    height:240px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.texto{
+    font-size:1.1rem;
+    line-height:1.9;
+    font-style:italic;
+    margin-bottom:35px;
+}
+
+.contador{
+    background:white;
+    width:fit-content;
+    margin:0 auto 35px;
+    padding:20px 30px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contador h3{
+    margin-bottom:10px;
+}
+
+#tiempo{
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.boton{
+    display:inline-block;
+    text-decoration:none;
+    background:#4A3E3D;
+    color:white;
+    padding:15px 35px;
+    border-radius:50px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    transition:0.3s;
+}
+
+.boton:hover{
+    transform:translateY(-2px);
+}
+
+.frase{
+    margin-top:40px;
+    color:#8A7A78;
+    font-style:italic;
+    font-size:1rem;
+}
+
+.corazon{
+    position:fixed;
+    bottom:-30px;
+    animation:subir linear infinite;
+    opacity:.6;
+    pointer-events:none;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Evelyn & David ❤️</h1>
+
+    <div class="fecha">20 • DICIEMBRE • 2025</div>
+
+    <div class="galeria">
+
+        <div class="polaroid">
+            <img src="https://i.ibb.co/VWCTnHtJ/Whats-App-Image-2026-06-16-at-13-15-07.jpg" alt="Nuestra foto">
+        </div>
+
+        <div class="polaroid">
+            <img src="https://i.ibb.co/mFDSHMHq/Whats-App-Image-2026-06-16-at-13-15-07-1.jpg" alt="Nuestra foto">
+        </div>
+
+    </div>
+
+    <div class="texto">
+        Desde el momento en que nuestras vidas se cruzaron,
+        cada día se convirtió en una nueva razón para sonreír.
+        Gracias por cada recuerdo, cada conversación y cada instante.
+        Esta es solo una pequeña parte de nuestra historia,
+        porque lo mejor aún está por venir. ❤️
+    </div>
+
+    <div class="contador">
+        <h3>❤️ Tiempo compartiendo esta hermosa historia ❤️</h3>
+        <div id="tiempo"></div>
+    </div>
+
+    <a href="https://open.spotify.com/intl-es/track/1cMFYGtNoh5x3hCWrHAVca?si=9d646b2a5ed344f6"
+       target="_blank"
+       class="boton">
+       Nuestra Playlist 🎵
+    </a>
+
+    <div class="frase">
+        "De todas las historias que existen,
+        mi favorita siempre será la nuestra."
+    </div>
+
+</div>
+
+<script>
+
+// Fecha: 20 de diciembre de 2025, 4:35:25 PM
+const fechaInicio = new Date("2025-12-20T16:35:25");
+
+function actualizarContador(){
+
+    const ahora = new Date();
+    const diferencia = ahora - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById("tiempo").innerHTML =
+        `${dias} días ${horas} horas ${minutos} minutos ${segundos} segundos`;
+}
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
+
+for(let i = 0; i < 25; i++){
+
+    const corazon = document.createElement("div");
+
+    corazon.className = "corazon";
+    corazon.innerHTML = "❤️";
+
+    corazon.style.left = Math.random() * 100 + "%";
+    corazon.style.fontSize = (15 + Math.random() * 20) + "px";
+    corazon.style.animationDuration = (8 + Math.random() * 8) + "s";
+
+    document.body.appendChild(corazon);
+}
+
+</script>
+
+</body>
+</html>
